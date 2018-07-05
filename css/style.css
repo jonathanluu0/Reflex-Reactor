@@ -1,7 +1,7 @@
 body{
-  background:  blue;
-
-}
+  /* background:  blue; */
+  margin-right: 700px;
+  }
 #star{
   height: 200px;
 
@@ -9,5 +9,12 @@ body{
 #surface{
   height: 75px;
   width: 75px;
-  
+
+}
+.gameBoard{
+  margin-top: 50px;
+  width:80em;
+  height:40em;
+  border: 1px solid #000;
+  background-image: url("NightSky.png");
 }

@@ -1,17 +1,35 @@
+console.log("Code Works");
 $(document).ready(function() {
 
-  $('#star').click(function(){
-    var nh = Math.floor(0 + Math.random() * 1000);
-    var nw = Math.floor(100 + Math.random() * 1000);
-    $('#star').hide();
+  var sentenceList = [
+    "Twinkle Twinkle Little Star",
+    "The quick brown fox jumped over the lazy dogs.",
+    "abcdefghijklmnopqrstuvwxyz",
+    null,
+    null,
+    null
+  ];
 
-    var d = document.getElementById('star');
-    d.style.position = "absolute";
-    d.style.left = nw + 'px';
-    d.style.top = nh + 'px';
-    $('#star').show();
+  function randomSentence(){
+    var num = Math.floor(Math.random() * 7) + 1;
+    if(sentenceList[num] != null){
+      return alert(sentenceList[num]);
+    }
+  }
 
+  function gameStart(){
+    $('#star').click(function(){
+      var nh = Math.floor(Math.random() * 30);
+      var nw = Math.floor(Math.random() * 70);
+      $('#star').hide();
+      setTimeout(randomSentence(), 1000);
+      var d = document.getElementById('star');
+      d.style.position = "absolute";
+      d.style.left = nw + 'em';
+      d.style.top = nh + 'em';
+      $('#star').show();
+    });
+  }
 
-  });
-
+  gameStart();
 });
