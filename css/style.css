@@ -18,3 +18,6 @@ body{
   border: 1px solid #000;
   background-image: url("NightSky.png");
 }
+button{
+float: right;
+}

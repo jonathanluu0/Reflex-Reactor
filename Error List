@@ -1,2 +1,5 @@
-Click Area of star is too large
-setTimeout of when randomSentence appears doesn't work properly
+- Click Area of star is too large
+
+- setTimeout of when randomSentence appears doesn't work properly
+
+- prompt(sentenceList[num]) disappears after first failed attempt

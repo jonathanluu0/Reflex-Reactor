@@ -11,11 +11,15 @@ $(document).ready(function() {
   ];
 
   function randomSentence(){
-    var num = Math.floor(Math.random() * 7) + 1;
+    var num = Math.floor(Math.random() * 6);
     if(sentenceList[num] != null){
-      return alert(sentenceList[num]);
+      var typePhrase = prompt(sentenceList[num]);
+        if(typePhrase != sentenceList[num]){
+          prompt(sentenceList[num]);
+        }
     }
   }
+
 
   function gameStart(){
     $('#star').click(function(){
