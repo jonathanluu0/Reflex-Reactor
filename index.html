@@ -26,41 +26,42 @@
       <div class="gameBoard">
         <img id="star" src="LensFlare.png" alt=""/>
       </div>
-      <button type="button" class="btn btn-primary" id="start-button">Game Start</button>
-      <div id="stopwatch">
-        <p>00:00:00</p>
+      <div class="picker-section">
+        <select class="selectpicker">
+          <option>10</option>
+          <option>20</option>
+          <option>30</option>
+        </select>
+        <button type="button" class="btn btn-primary" id="start-button">Game Start</button>
+        <div id="stopwatch">
+          <p>0.00</p>
+        </div>
       </div>
-      <select class="selectpicker">
-        <option>10</option>
-        <option>20</option>
-        <option>30</option>
-      </select>
+
+
+
+    <!-- <form id="name-submit">
+      Name:  <input type="text" name="fullname"><input type="submit" value="Submit">
+    </form> -->
+    <form id="name-submit">
+      Name: <input class="name"></input> <button class="btn btn-secondary" id="enter"></button>
+    </form>
       <div id="leaderboard">
         <ol start="1">
           <li class="row">
-            <!-- <div class="row"> -->
-                <!-- <div class="name">1. Player 1</div><div class="time">10 seconds</div> -->
-
-                <div class="name">1. <span id="first-name">Player 1</span></div><div class="time"><span id="one">10</span>seconds</div>
-            <!-- </div> -->
+                <div class="name">1. <span id="first-name">Player 1</span></div><div class="time"><span id="one">10</span> seconds</div>
           </li>
           <li class="row">
-            <!-- <div class="row"> -->
-                <div class="name">2. <span id="second-name">Player 1</span></div><div class="time"><span id="two">10</span> seconds</div>
-            <!-- </div> -->
+                <div class="name">2. <span id="second-name">Player 1</span></div><div class="time"><span id="two">11</span> seconds</div>
           </li>
           <li class="row">
-            <!-- <div class="row"> -->
-                <div class="name">3. <span id="third-name">Player 1</span></div><div class="time"><span id="three">10</span> seconds</div>
-            <!-- </div> -->
+                <div class="name">3. <span id="third-name">Player 1</span></div><div class="time"><span id="three">12</span> seconds</div>
           </li>
           <li class="row">
-            <!-- <div class="row"> -->
-                <div class="name">4. <span id="fourth-name">Player 1</span></div><div class="time"><span id="four">10</span> seconds</div>
-            <!-- </div> -->
+                <div class="name">4. <span id="fourth-name">Player 1</span></div><div class="time"><span id="four">13</span> seconds</div>
           </li>
           <li class="row">
-                <div class="name">5. <span id="fifth-name">Player 1</span></div><div  class="time"><span id="five">10</span> seconds</div>
+                <div class="name">5. <span id="fifth-name">Player 1</span></div><div  class="time"><span id="five">14</span> seconds</div>
           </li>
         </ol>
       </div>

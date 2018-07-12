@@ -1,18 +1,30 @@
 console.log("Code Works");
 var timer = null;
+var highScore        = [10, 11, 12, 13, 14];
+var highScore2       = [11, 12, 13, 14, 15];
+var highScore3       = [12, 13, 14, 15, 20];
+var highScoreBoardList = [highScore, highScore2, highScore3];
+var maxCount = parseInt($('.selectpicker :selected').val());
+var displayTime;
+var count = 0;
+
+function sortNumber(a, b){
+  return a - b;
+}
+function updateLeaderboard(){
+  $("#one").text(highScore[0])
+  $("#two").text(highScore[1])
+  $("#three").text(highScore[2])
+  $("#four").text(highScore[3])
+  $("#five").text(highScore[4])
+}
+
 function initializeGame(){
-  var count = 0;
   // var countS = 0;
+  count = 0;
   var runSentence = true;
   var gameEnd = false;
-  var highScore        = [10, 11, 12, 13, 14];
-  var highScore2       = [11, 12, 13, 14, 15];
-  var highScore3       = [12, 13, 14, 15, 20];
-  var highScoreBoardList = [highScore, highScore2, highScore3,]
-  var maxCount = parseInt($('.selectpicker :selected').val());
-  // var totalGameTime;
   var startTime = Date.now();
-  var displayTime;
   var sentenceList = [
     "Twinkle Twinkle Little Star",
     "The quick brown fox jumped over the lazy dogs.",
@@ -34,9 +46,6 @@ function initializeGame(){
       }
       displayTime = Math.round((Date.now() - startTime)/10)/100;
       stopwatch.innerHTML = displayTime;
-      // var milliseconds = Math.floor(timeDifference % 100);
-      // var seconds = Math.floor((timeDifference / 1000) % 60);
-      // var minutes = Math.floor((timeDifference / (1000*60)) % 60);
       console.log(timer)
   }
 
@@ -58,7 +67,7 @@ function initializeGame(){
   });
 
   function randomSentence(){
-    var num = Math.floor(Math.random() * 10);
+    var num = Math.floor(Math.random() * 9);
     if(sentenceList[num] != null){
       var typePhrase = prompt(sentenceList[num]);
         if(typePhrase != sentenceList[num]){
@@ -86,28 +95,45 @@ function initializeGame(){
     //     }
     //   }
     // }
-    function sortNumber(a, b){
-      return a - b;
-    }
-    function checkStarsCount(){
-      if(count == maxCount){
-        $('#star').unbind("click");
-        var recordTime = stopwatch.innerHTML;
-        clearInterval(timer);
-     if(displayTime < highScore[4]){
-  			highScore[4] = displayTime;
-  			highScore.sort(sortNumber);
-          console.log(timer, highScore)
-        $("#one").text(highScore[0])
-        $("#two").text(highScore[1])
-  			$("#three").text(highScore[2])
-        $("#four").text(highScore[3])
-        $("#five").text(highScore[4])
-      }
+
+} //initializeGame ending bracket
+
+function checkStarsCount(){
+  if(count == maxCount){
+    $('#star').unbind("click");
+    var recordTime = stopwatch.innerHTML;
+    clearInterval(timer);
+    if(displayTime < highScore[4]){
+      highScore[4] = displayTime;
+      highScore.sort(sortNumber);
+      console.log(timer, highScore)
+      updateLeaderboard();
     }
   }
 }
+
 $(document).ready(function() {
+  $('#name-submit').on('submit', function(event){
+    event.preventDefault;
+    let name = $('.name').val();
+  });
+$(".selectpicker").on('change', function(){
+  maxCount = parseInt($('.selectpicker :selected').val());
+  if(maxCount == 10){
+    highScore = highScoreBoardList[0];
+    updateLeaderboard();
+  }
+  if(maxCount == 20){
+    highScore = highScoreBoardList[1];
+    updateLeaderboard();
+  }
+  if(maxCount == 30){
+    highScore = highScoreBoardList[2];
+    updateLeaderboard();
+  }
+});
+
+
   $('#start-button').on("click", function(){
     if (timer != null){
       clearInterval(timer);
