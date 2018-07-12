@@ -1,6 +1,6 @@
 console.log("Code Works");
 var timer = null;
-let name = $('.username').val();
+let name = "Guest Player"
 var highScore = [
       {name:'Player 1', time: 10},
       {name:'Player 1', time: 11},
@@ -9,18 +9,18 @@ var highScore = [
       {name:'Player 1', time: 14}
     ];
 var highScore2 = [
-      {name:'Player 1', time: 11},
-      {name:'Player 1', time: 12},
-      {name:'Player 1', time: 13},
-      {name:'Player 1', time: 14},
-      {name:'Player 1', time: 15}
-    ];
-var highScore3 = [
       {name:'Player 1', time: 15},
       {name:'Player 1', time: 16},
       {name:'Player 1', time: 17},
       {name:'Player 1', time: 18},
       {name:'Player 1', time: 20}
+    ];
+var highScore3 = [
+      {name:'Player 1', time: 20},
+      {name:'Player 1', time: 22},
+      {name:'Player 1', time: 24},
+      {name:'Player 1', time: 26},
+      {name:'Player 1', time: 28}
     ];
 
 var highScoreBoardList = [highScore, highScore2, highScore3];
@@ -56,6 +56,8 @@ function initializeGame(){
     "The quick brown fox jumped over the lazy dogs.",
     "abcdefg",
     "MasterClass",
+    null,
+    null,
     null,
     null,
     null,
