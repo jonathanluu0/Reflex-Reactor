@@ -1,22 +1,48 @@
 console.log("Code Works");
 var timer = null;
-var highScore        = [10, 11, 12, 13, 14];
-var highScore2       = [11, 12, 13, 14, 15];
-var highScore3       = [12, 13, 14, 15, 20];
+let name = $('.username').val();
+var highScore = [
+      {name:'Player 1', time: 10},
+      {name:'Player 1', time: 11},
+      {name:'Player 1', time: 12},
+      {name:'Player 1', time: 13},
+      {name:'Player 1', time: 14}
+    ];
+var highScore2 = [
+      {name:'Player 1', time: 11},
+      {name:'Player 1', time: 12},
+      {name:'Player 1', time: 13},
+      {name:'Player 1', time: 14},
+      {name:'Player 1', time: 15}
+    ];
+var highScore3 = [
+      {name:'Player 1', time: 15},
+      {name:'Player 1', time: 16},
+      {name:'Player 1', time: 17},
+      {name:'Player 1', time: 18},
+      {name:'Player 1', time: 20}
+    ];
+
 var highScoreBoardList = [highScore, highScore2, highScore3];
-var maxCount = parseInt($('.selectpicker :selected').val());
+var maxCount
 var displayTime;
 var count = 0;
 
-function sortNumber(a, b){
-  return a - b;
+function sortNumber(a, b){ // sorts time
+  return a.time - b.time;
 }
-function updateLeaderboard(){
-  $("#one").text(highScore[0])
-  $("#two").text(highScore[1])
-  $("#three").text(highScore[2])
-  $("#four").text(highScore[3])
-  $("#five").text(highScore[4])
+
+function updateLeaderboard(){ // updates names and times
+  $("#one").text(highScore[0].time);
+  $("#first-name").text(highScore[0].name);
+  $("#two").text(highScore[1].time);
+  $("#second-name").text(highScore[1].name);
+  $("#three").text(highScore[2].time);
+  $("#third-name").text(highScore[2].name);
+  $("#four").text(highScore[3].time);
+  $("#fourth-name").text(highScore[3].name);
+  $("#five").text(highScore[4].time);
+  $("#fifth-name").text(highScore[4].name);
 }
 
 function initializeGame(){
@@ -29,7 +55,7 @@ function initializeGame(){
     "Twinkle Twinkle Little Star",
     "The quick brown fox jumped over the lazy dogs.",
     "abcdefg",
-    null,
+    "MasterClass",
     null,
     null,
     null,
@@ -37,10 +63,11 @@ function initializeGame(){
     null,
     null
   ];
-  timer = setInterval(updateDisplay, 1);
+
+  timer = setInterval(updateDisplay, 1); //updates timer every millisecond when start button is pushed
 
   function updateDisplay(){
-      if(gameEnd == true){
+      if(gameEnd == true){  // stops timer when game ends
         clearInterval(timer);
         return;
       }
@@ -63,15 +90,19 @@ function initializeGame(){
     d.style.position = "absolute";
     d.style.left = nw + 'em';
     d.style.top = nh + 'em';
+    // var divElement = document.getElementById('div');
+    // divElement.style.position = "absolute";
+    // divElement.style.left = nw + 'em';
+    // divElement.style.top = nh + 'em';
     $('#star').show();
   });
 
   function randomSentence(){
-    var num = Math.floor(Math.random() * 9);
+    var num = Math.floor(Math.random() * 10);
     if(sentenceList[num] != null){
       var typePhrase = prompt(sentenceList[num]);
-        if(typePhrase != sentenceList[num]){
-          prompt(sentenceList[num]);
+        while(typePhrase != sentenceList[num]){
+          typePhrase = prompt(sentenceList[num]);
           // countS++;
 
         }
@@ -99,12 +130,14 @@ function initializeGame(){
 } //initializeGame ending bracket
 
 function checkStarsCount(){
+  console.log(maxCount)
   if(count == maxCount){
     $('#star').unbind("click");
     var recordTime = stopwatch.innerHTML;
     clearInterval(timer);
-    if(displayTime < highScore[4]){
-      highScore[4] = displayTime;
+    if(displayTime < highScore[4].time){
+      highScore[4].time = displayTime;
+      highScore[4].name = name;
       highScore.sort(sortNumber);
       console.log(timer, highScore)
       updateLeaderboard();
@@ -113,9 +146,11 @@ function checkStarsCount(){
 }
 
 $(document).ready(function() {
+  maxCount = parseInt($('.selectpicker :selected').val());
   $('#name-submit').on('submit', function(event){
-    event.preventDefault;
-    let name = $('.name').val();
+    event.preventDefault();
+    name = $('.username').val();
+    console.log(name);
   });
 $(".selectpicker").on('change', function(){
   maxCount = parseInt($('.selectpicker :selected').val());
@@ -133,8 +168,7 @@ $(".selectpicker").on('change', function(){
   }
 });
 
-
-  $('#start-button').on("click", function(){
+  $('#start-button').on("click", function(){ //starts game through button
     if (timer != null){
       clearInterval(timer);
     }
