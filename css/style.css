@@ -11,6 +11,8 @@ form{
   width: 120px;
   float: left;
 }
+
+
 #star{
   height: 200px;
 }
@@ -56,9 +58,11 @@ form{
 .row:nth-child(2) {background: #c0c0c0;}
 /* Bronze */
 .row:nth-child(3) {background: #cd7f32;}
-.row:nth-child(4) {background: white;}
-.row:nth-child(5) {background: white;}
 
+
+.unranked{
+  background: white;
+}
 .row {
   position: relative;
   display: block;
