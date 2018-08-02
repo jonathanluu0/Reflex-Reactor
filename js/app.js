@@ -71,7 +71,7 @@ function updateLeaderboard(){ // updates names and times
 }
 
 function initializeGame(){
-  // var countS = 0;
+//var countS = 0;
   count = 0;
   var runSentence = true;
   var gameEnd = false;
@@ -149,7 +149,7 @@ function initializeGame(){
     //     }
     //   }
     //   if(maxCount == 30){
-    //     if(countS == 12){
+    //     if(countS == 10){
     //       runSentence = false;
     //     }
     //   }
